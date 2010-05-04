@@ -1,0 +1,66 @@
+Setting up a quick chat demo
+============================
+
+Introduction
+------------
+
+*babble.demo* sets up a fully configured and running Babble instant messaging
+environment for Plone.
+
+It's intended as a demo and aid to help integrators familiarise themselves with
+how Babble works and what it has to offer.
+
+All the eggs (currently) related to Babble are installed. These are:
+
+- `babble.server <http://plone.org/products/babble.server>`_: 
+   - The Zope messaging service. This service should ideally be run in it's
+     own dedicated server or Zeo client (as in this case).
+- `babble.client <http://plone.org/products/babble.client>`_: 
+   - The Plone client side program. This provides the main chat functionality 
+     such as the *online contacts* portlet and the chat boxes.
+- `actionbar.panel <http://plone.org/products/actionbar.panel>`_:
+   - This add-on is not directly associated with Babble and is not a
+     requirement of it. It provides an extendablee action panel that hovers at 
+     the bottom of the screen.
+- `actionbar.babble <http://plone.org/products/actionbar.babble>`_:
+   - The Babble extention for actionbar.panel. It provides a special
+     action-box that provides a list of currently online users. Additionally,
+     chatboxes are docked on this panel.
+
+
+Steps to get a running system:
+------------------------------
+
+I assume here that *python* is python version 2.6.* with PIL (the python
+imaging library) installed::
+
+    python bootstrap.py -c plone4.cfg
+
+    ./bin/buildout -c plone4.cfg
+
+The buildout will install a Zeo server running on port 2000 with two clients, 
+*instance* on port 8080 and *chatserver* on port 8081.
+
+*supervisor* is installed to manage these processes. After the buildout has
+completed succesfully, start the supervisor::
+
+    ./bin/supervisord
+
+You can check on the commandline wether the processes started succesfully::
+
+    ./bin/supervisorctl status
+
+Or in your browser by visiting http://localhost:9000, with username and
+password 'admin'.
+
+Now, in your browser, go to http://localhost:8080, and click on the *Create a 
+new Plone site* button. In the next page, choose babble.demo from the list of
+'add-ons' and then click *Create Plone site*.
+
+Babble and the ActionBar should now be installed and correctly configured.
+
+Now head to http://localhost:8080/Plone/@@usergroup-userprefs, and add some
+users.
+
+
+
