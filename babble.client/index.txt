@@ -60,33 +60,42 @@ section.
 Manual configuration
 --------------------
 
-babble.client needs a running zope instance with a configured babble.server
-messaging service. (see the babble.server 
-`README <http://pypi.python.org/pypi/babble.server>`_)
+babble.client needs a running zope instance configured with the babble.server
+chat service. (see the babble.server `README <http://pypi.python.org/pypi/babble.server>`_)
 
-NOTE: It's recommended that you run the babble.server messaging service in a separate
+babble.server is a pure Zope2 application and  the **Chat Service** that it
+provides, should be added in the ZMI. It *must be created in the Zope
+root* of your Zope instance, otherwise it won't work.
+
+NOTE: It's strongly recommended that you run the babble.server messaging service in a separate
 server or Zeo Client. Running the client and server in the same instance
-sometimes causes the browser (and probably Zope/ZPublisher) to become
+sometimes causes the browser (probably Zope's ZPublisher) to become
 unresponsive.
 
-IMPORTANT: The babble.server 'Chat Service' object *must* be created in the Zope
-root of a Zope instance, not in any Plone root. 
+.. figure::  ../images/Screenshot-2.png
+   :align:   center
 
-The client is configured via the portal_chat tool in the ZMI:
 
- - Service name: This is the name of babble.server's 'Chat Service' object that you
+The client is configured via the **portal_chat** tool in the ZMI:
+
+ - **Service name:** This is the name of babble.server's 'Chat Service' object that you
    created in the Zope root of the Zope instance you will be using as your
    message server.
 
- - Host: This is the hostname of the server running the 'Chat Service'. 
+ - **Host:** This is the hostname of the server running the 'Chat Service'. 
 
- - Port: This is the port number of the server running the 'Chat Service'.
+ - **Port:** This is the port number of the server running the 'Chat Service'.
 
- - Username: This is the username of the Zope user that you used to
+ - **Username:** This is the username of the Zope user that you used to
    create the 'Chat Service'.
 
- - Password: This is the password of the Zope user that you used to
+ - **Password:** This is the password of the Zope user that you used to
    create the 'Chat Service'.
+
+
+.. figure::  ../images/Screenshot-4.png
+   :align:   center
+
 
 
 How do I start using it?
@@ -110,6 +119,9 @@ Simply click on the user in the portlet, and a chatbox will appear in the
 bottom right of the page.
 
 Now start babbling!
+
+.. figure::  ../images/Screenshot-1.png
+   :align:   center
 
 
 Troubleshooting

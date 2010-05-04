@@ -4,7 +4,7 @@ Babble messaging server
 Introduction
 ------------
 
-babble.server is a messaging service for Zope2 based systems.
+**babble.server** is a messaging service for Zope2 based systems.
 
 It's the messaging server used by babble.client, an instant messaging
 client for Plone. However, it doesn't have any dependencies on Plone or babble.client
@@ -13,12 +13,12 @@ and is designed to be usable independent of the frontend client.
 Features
 --------
 
-- User accounts: users must be registered for the chat service
-- Security: most messaging actions requires the user to authenticate 
-- User status support: users can set their status, such as 'busy', 'chatty' or
+- **User accounts:** users must be registered for the chat service
+- **Security:** most messaging actions requires the user to authenticate 
+- **User status support:** users can set their status, such as 'busy', 'chatty' or
   'invisible'.
-- Web service: all public API methods return JSON strings.
-- 100% test coverage.
+- **Web service:** all public API methods return JSON strings.
+- **Tests:** 100% test coverage.
 
 Usage
 -----
@@ -26,6 +26,9 @@ Usage
 Simply add the *Chat Service* in the ZMI (Zope Management Interface) by clicking
 on the dropdown box and choosing it from the list.
 
+
+.. figure::  ../images/Screenshot-2.png
+   :align:   center
 
 API
 ---
