@@ -6,16 +6,18 @@ Introduction
 ============
 
 Babble is an instant messaging service for Plone. 
-It consists of babble.client as the Plone front-end client and 
+It consists of `babble.client <http://plone.org/products/babble.client>`_ 
+as the Plone front-end client and 
 `babble.server <http://plone.org/products/babble.server>`_, 
-a Zope2 messaging service, as the backend chat server.
+a Zope2 messaging service, as the backend chat service.
 
-The client consists of an *Online contacts* portlet and modal dialog chatboxes 
-and makes extensive use of JQuery and Ajax techniques.
+The client consists of an *Online contacts* portlet with which you can initiate 
+new chats. Chat sessions occur in modal dialog chatboxes which make use of 
+JQuery and Ajax polling to provide seamless, real-time messaging.
 
-The client is continuously updated by means of polling, with the polling
-interval gradually becoming longer when there is not chat activity taking
-place. Communication between the client and server is achieved with JSON packets 
+During inactive periods, the polling interval gradually becomes longer until it
+reaches a specific (configurable) maximum polling interval.
+Communication between the client and server is achieved with JSON packets 
 sent via XML-RPC. 
 
 
@@ -50,8 +52,9 @@ There is a `demo <http://plone.org/products/babble.demo>`_ egg available
 on Plone.org and pypi, with which you can quickly set up a new Babble 
 configured Plone 4 site for demonstration purposes. 
 
-See the README of the `babble.demo <http://plone.org/products/babble.demo>`_ 
-package for instructions on how to set it up.
+See the README of `babble.demo <http://plone.org/products/babble.demo>`_,
+or the section titled **Setting up a quick chat demo**, in this document,
+for instructions on how to set it up.
 
 If you however want to configure the system yourself, then read the next
 section.
@@ -59,15 +62,16 @@ section.
 
 Manual configuration
 --------------------
+`babble.client <http://plone.org/products/babble.client>`_
+needs a running zope instance configured with the 
+`babble.server <http://plone.org/products/babble.server>`_
+chat service. 
 
-babble.client needs a running zope instance configured with the babble.server
-chat service. (see the babble.server `README <http://pypi.python.org/pypi/babble.server>`_)
+*babble.server* is a pure Zope2 application and the **Chat Service** object that it
+provides, should be added in the Zope Management Interface (ZMI). 
+It **must be created in the Zope root** of your Zope instance, otherwise it won't work.
 
-babble.server is a pure Zope2 application and  the **Chat Service** that it
-provides, should be added in the ZMI. It *must be created in the Zope
-root* of your Zope instance, otherwise it won't work.
-
-NOTE: It's strongly recommended that you run the babble.server messaging service in a separate
+NOTE: It's strongly recommended that you run the *babble.server* messaging service in a separate
 server or Zeo Client. Running the client and server in the same instance
 sometimes causes the browser (probably Zope's ZPublisher) to become
 unresponsive.
@@ -76,9 +80,10 @@ unresponsive.
    :align:   center
 
 
+
 The client is configured via the **portal_chat** tool in the ZMI:
 
- - **Service name:** This is the name of babble.server's 'Chat Service' object that you
+ - **Service name:** This is the name of *babble.server*'s 'Chat Service' object that you
    created in the Zope root of the Zope instance you will be using as your
    message server.
 
@@ -101,7 +106,7 @@ The client is configured via the **portal_chat** tool in the ZMI:
 How do I start using it?
 ------------------------
 
-Make sure that babble.client is installed via Plone's control panel, or the
+Make sure that *babble.client* is installed via Plone's control panel, or the
 portal_quickinstaller tool in the ZMI (Zope management interface).
 
 In Plone, go to the portlets manage page. In the dropdown of addable portlets,
@@ -111,7 +116,7 @@ Add this portlet. If you have more than one person currently using the site,
 you should see them appear in this portlet.
 
 Note: When you are running your portal_javascripts registry is in debug mode (or
-when you are running './bin/instance fg' in Plone4), then the *Online contacts* 
+when you are running *./bin/instance fg* in Plone4), then the *Online contacts* 
 portlet will show *all* the registered users, and not just the online ones, to make
 debugging easier.
 
@@ -127,10 +132,10 @@ Now start babbling!
 Troubleshooting
 ===============
 
-1). *I get a 'connection error' message inside the chat window*
+**1. I get a 'connection error' message inside the chat window**
 
  The 'connection error' message happens whenever the chat client
- (babble.client) cannot communicate with the chat server (babble.server).
+ (*babble.client*) cannot communicate with the chat server (*babble.server*).
  
  This is usually because the chat server is not running (i.e when you
  restart the zope server).
@@ -138,8 +143,8 @@ Troubleshooting
  Check that the chat server is running and that your settings in the
  portal_chat tool are correct.
 
-2). *Plone freezes or locks up completely and I have to restart the instance
-before this goes away*
+**2. Plone freezes or locks up completely and I have to restart the instance
+before this goes away**
 
  This happens when there is only one Zope instance that has both the
  chat client and the chat server running in it.
@@ -161,7 +166,7 @@ before this goes away*
  This will of course mean that messages can take longer to appear for the
  conversation partners.
 
-3). *Nothing happens when I click on a contact's name in the portlet*
+**3. Nothing happens when I click on a contact's name in the portlet**
 
  Check the debug output on Firebug for any clues. If you get messages that
  something is undefined, such as "jQuery is not defined", then the ordering
@@ -174,7 +179,7 @@ before this goes away*
  newer jQuery version is installed and jquery.js is disabled. Make sure 
  that the newer library is *before* the above mentioned scipts.
 
-4). Babble doesn't work with deliverance of collection.xdv
+**4. Babble doesn't work with deliverance or collection.xdv**
 
  That is because deliverance and collective.xdv need to be told to ignore the
  ajax calls that Babble makes.

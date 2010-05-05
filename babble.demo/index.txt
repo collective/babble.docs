@@ -4,7 +4,7 @@ Setting up a quick chat demo
 Introduction
 ------------
 
-*babble.demo* sets up a fully configured and running Babble instant messaging
+**babble.demo** sets up a fully configured and running **Babble** instant messaging
 environment for Plone.
 
 It's intended as a demo and aid to help integrators familiarise themselves with
@@ -31,7 +31,12 @@ All the eggs (currently) related to Babble are installed. These are:
 Steps to get a running system:
 ------------------------------
 
-I assume here that *python* is python version 2.6.* with PIL (the python
+**babble.demo** provides its own buildout configuration file, *plone4.cfg*.
+
+You should use this file, together with buildout, to create a new Zope/Plone
+instance.
+
+In the examples below, assume that the python version is 2.6.* with PIL (the python
 imaging library) installed::
 
     python bootstrap.py -c plone4.cfg
@@ -57,10 +62,11 @@ Now, in your browser, go to http://localhost:8080, and click on the *Create a
 new Plone site* button. In the next page, choose babble.demo from the list of
 'add-ons' and then click *Create Plone site*.
 
+.. figure::  ../images/Screenshot-5.png
+
 Babble and the ActionBar should now be installed and correctly configured.
 
-Now head to http://localhost:8080/Plone/@@usergroup-userprefs, and add some
+Head to http://localhost:8080/Plone/@@usergroup-userprefs, and add some
 users.
 
-
-
+Happy Babbling!
