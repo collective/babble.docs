@@ -205,10 +205,3 @@ before this goes away**
  Where MySite is your Plone site's name, running on 8080 and the deliverance
  proxy on 5099.
 
-
-Contact
-=======
-
-Is there information lacking in this readme?
-Contact me with questions or suggestions:
-- brand@syslab.com
