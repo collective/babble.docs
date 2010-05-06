@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Babble'
-copyright = u'2010, JC Brand'
+copyright = u'2010, Jan-Carel Brand'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -173,7 +173,7 @@ htmlhelp_basename = 'Babbledoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'Babble.tex', u'Babble Documentation',
-   u'JC Brand', 'manual'),
+   u'Jan-Carel Brand', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

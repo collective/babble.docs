@@ -4,13 +4,12 @@ Babble integration with ActionBar
 Introduction
 ------------
 
-actionbar.babble is the Babble chat client integration package for 
-the ActionBar, an extensible floating panel with links at the 
+*actionbar.babble* is the **Babble** chat client's integration package for 
+the **ActionBar**, an extensible floating panel with links at the 
 bottom of your Plone site.
 
 For more information regarding Babble and ActionBar, please see their
 respective packages: *babble.client*, *babble.server* and *actionbar.panel*.
-
 
 How to use
 ----------
@@ -30,3 +29,16 @@ current online users you can chat with.
 .. figure::  ../images/Screenshot.png
    :align:   center
 
+
+Troubleshooting:
+----------------
+
+1). The *Online Users* box, and the individual chatboxes appear slightly lower
+    and behind the ActionBar panel. When you minimize a box, it disappears behind
+    the panel.
+
+ Make sure that the babblefeeder.css file is loaded *after* the chat.css file
+ in the portal_css resource registry in the Zope management interface.
+ You can do this by hand, or simply re-run the actionbar.babble CSS import step
+ in the portal_setup tool.
+ 
