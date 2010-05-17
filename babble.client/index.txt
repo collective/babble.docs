@@ -13,12 +13,23 @@ a Zope2 messaging service, as the backend chat service.
 
 The client consists of an *Online contacts* portlet with which you can initiate 
 new chats. Chat sessions occur in modal dialog chatboxes which make use of 
-JQuery and Ajax polling to provide seamless, real-time messaging.
-
-During inactive periods, the polling interval gradually becomes longer until it
+JQuery and Ajax polling to provide seamless, real-time messaging. During inactive 
+periods, the polling interval gradually becomes longer until it
 reaches a specific (configurable) maximum polling interval.
+
 Communication between the client and server is achieved with JSON packets 
-sent via XML-RPC. 
+sent via XML-RPC. The XML-RPC configuration values are stored in the
+*portal_chat* tool which can be found in the root of the Plone site 
+inside the ZMI (Zope management interface). See the `Portal Chat Tool`_  for 
+a breakdown of its configuration values.
+
+On the server side (backend), a **Chat Service** object needs to be
+created, which will then act as a messaging server. Refer to the `Chat Service`_
+section on how to create the **Chat Service**.
+
+
+.. figure::  ../images/babble_diagram.png
+   :align:   center
 
 
 Features
@@ -62,6 +73,10 @@ section.
 
 Manual configuration
 --------------------
+
+Chat Service
+************
+
 `babble.client <http://plone.org/products/babble.client>`_
 needs a running zope instance configured with the 
 `babble.server <http://plone.org/products/babble.server>`_
@@ -80,8 +95,11 @@ unresponsive.
    :align:   center
 
 
+Portal Chat Tool
+****************
 
 The client is configured via the **portal_chat** tool in the ZMI:
+
 
  - **Service name:** This is the name of *babble.server*'s 'Chat Service' object that you
    created in the Zope root of the Zope instance you will be using as your
@@ -96,6 +114,16 @@ The client is configured via the **portal_chat** tool in the ZMI:
 
  - **Password:** This is the password of the Zope user that you used to
    create the 'Chat Service'.
+
+ - **Maximum polling interval**: The time interval between polls to the 
+   <em>babble.server</em> chatservice starts off at a specified minimum value 
+   and then gradually increases to a specified maximum value during periods where
+   there isn't any chat activity. Specify the minimum polling interval value here.
+
+ - **Minimum polling interval**: The time interval between polls to the 
+   <em>babble.server</em> chatservice starts off at a specified minimum value
+   and then gradually increases to a specified maximum value during periods where
+   there isn't any chat activity. Specify the maximum polling interval value here.
 
 
 .. figure::  ../images/Screenshot-4.png
