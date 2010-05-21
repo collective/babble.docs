@@ -146,7 +146,7 @@ you should see them appear in this portlet.
 Note: When you are running your portal_javascripts registry is in debug mode (or
 when you are running *./bin/instance fg* in Plone4), then the *Online contacts* 
 portlet will show *all* the registered users, and not just the online ones, to make
-debugging easier.
+debugging easier. **As of version 1.3.2, to avoid confusion, this is no longer the case.**
 
 Simply click on the user in the portlet, and a chatbox will appear in the
 bottom right of the page.
