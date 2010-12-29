@@ -233,8 +233,7 @@ before this goes away**
  Where MySite is your Plone site's name, running on 8080 and the deliverance
  proxy on 5099.
 
-**5. When I chat, a different users name appears as the message author in the
-chat box. When I reload the page, the problem goes away.
+**5. When I chat, a different user's name appears as the message author in the chat box. When I reload the page, the problem goes away.**
 
 Babble makes use of a dynamically generated javascript file named *chat.js*. 
 Make sure that this file is not cached or merged, otherwise this problem can
