@@ -20,6 +20,33 @@ Features
 - **Web service:** all public API methods return JSON strings.
 - **Tests:** 100% test coverage.
 
+
+Setup
+-----
+
+The chatserver is designed to be a standalone and lightweight Zope2 app. It doesn't depend
+on Plone at all.
+
+The best way to create a chatserver is as a Zeo client.
+
+Note: It's important to include the zcml slug for babble.server.
+
+For example::
+
+    [buildout]
+    parts += chatserver
+
+    [chatserver]
+    recipe = plone.recipe.zope2instance
+    http-address = 0.0.0.0:8081
+    user = admin:admin
+    shared-blob = on
+    zeo-address = ${zeo:zeo-address}
+    zeo-client = on
+    eggs = babble.server
+    zcml = babble.server
+
+
 Usage
 -----
 
