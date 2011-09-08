@@ -5,10 +5,6 @@ Babble Plone chat client
 Introduction
 ============
 
-.. note::
-    In babble.client versions older than 1.5b2, the chat tool is called
-    *portal_chat*, **not** *portal_babblechat*
-
 Babble is an instant messaging service for Plone. 
 It consists of `babble.client <http://plone.org/products/babble.client>`_ 
 as the Plone front-end client and 
@@ -23,7 +19,7 @@ reaches a specific (configurable) maximum polling interval.
 
 Communication between the client and server is achieved with JSON packets 
 sent via XML-RPC. The XML-RPC configuration values are stored in the
-*portal_babblechat* tool which can be found in the root of the Plone site 
+*portal_chat* tool which can be found in the root of the Plone site 
 inside the ZMI (Zope management interface). See the `Portal Chat Tool`_  for 
 a breakdown of its configuration values.
 
@@ -102,7 +98,7 @@ unresponsive.
 Portal Chat Tool
 ****************
 
-The client is configured via the **portal_babblechat** tool in the ZMI:
+The client is configured via the **portal_chat** tool in the ZMI:
 
 
  - **Service name:** This is the name of *babble.server*'s 'Chat Service' object that you
@@ -173,7 +169,7 @@ Troubleshooting
  restart the zope server).
  
  Check that the chat server is running and that your settings in the
- portal_babblechat tool are correct.
+ portal_chat tool are correct.
 
 **2. Plone freezes or locks up completely and I have to restart the instance
 before this goes away**
@@ -189,11 +185,11 @@ before this goes away**
  The best solution is to run the chat server in a separate dedicated Zeo 
  instance not being used for anything else. 
  
- Make sure to change the port in the portal_babblechat tool to point to this
+ Make sure to change the port in the portal_chat tool to point to this
  Zeo instance.
  
  A second thing you can do, is to increase the minimum poll time in
- the portal_babblechat tool, for example from 3000 ms to 6000 ms or more.
+ the portal_chat tool, for example from 3000 ms to 6000 ms or more.
  
  This will of course mean that messages can take longer to appear for the
  conversation partners.
