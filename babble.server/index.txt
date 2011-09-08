@@ -27,9 +27,11 @@ Setup
 The chatserver is designed to be a standalone and lightweight Zope2 app. It doesn't depend
 on Plone at all.
 
-The best way to create a chatserver is as a Zeo client.
+It's best to run the server with it's own ZODB instance, separate from the
+client.
 
-Note: It's important to include the zcml slug for babble.server.
+If you however want to share a single ZODB between the client and server, it's
+best to run the chatserver in it's own dedicated ZEO client.
 
 For example::
 
@@ -45,6 +47,9 @@ For example::
     zeo-client = on
     eggs = babble.server
     zcml = babble.server
+
+.. note::
+    It's important to include the zcml slug for babble.server.
 
 
 Usage
