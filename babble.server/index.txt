@@ -30,9 +30,6 @@ on Plone at all.
 It's best to run the server with it's own ZODB instance, separate from the
 client.
 
-If you however want to share a single ZODB between the client and server, it's
-best to run the chatserver in it's own dedicated ZEO client.
-
 For example::
 
     [buildout]
@@ -40,17 +37,17 @@ For example::
 
     [chatserver]
     recipe = plone.recipe.zope2instance
-    http-address = 0.0.0.0:8081
+    http-address = 8081
+    zeo-client = off
+    shared-blob = off
     user = admin:admin
-    shared-blob = on
-    zeo-address = ${zeo:zeo-address}
-    zeo-client = on
+    file-storage = filestorage/DataChat.fs
+    blob-storage = var/blobstorage-chat
     eggs = babble.server
     zcml = babble.server
 
 .. note::
     It's important to include the zcml slug for babble.server.
-
 
 Usage
 -----
