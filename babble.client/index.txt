@@ -105,9 +105,20 @@ The client is configured via the **portal_chat** tool in the ZMI:
    created in the Zope root of the Zope instance you will be using as your
    message server.
 
- - **Host:** This is the hostname of the server running the 'Chat Service'. 
+ - **The chat service is on the same machine:** Check this if the chat service
+   is created on the same Zope/Plone instance and is therefore not running on a
+   different server. This will disable XML/RPC and instead use direct method
+   calls. Note that it's recommended to run your Chat Service in it's own ZODB,
+   so if you want to run it in the same instance, consider 
+   `mounting a separate ZODB
+   <http://plone.org/documentation/kb/mount-zeo-into-plonesite>`_.
+
+ - **Hostname or relative path:** If the Chat Service is on a different server,
+   then specify the hostname here. Otherwise, if the Chat Service is on the
+   same server and not in the Zope root, then specify the path to it here.
 
  - **Port:** This is the port number of the server running the 'Chat Service'.
+   Only applicable when the Chat Service is on a different server.
 
  - **Username:** This is the username of the Zope user that you used to
    create the 'Chat Service'.
